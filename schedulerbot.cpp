@@ -804,7 +804,7 @@ void SchedulerBot::HandleComment(std::string comment, std::string channel, std::
 		}
 
 		//Remove a game from he schedule, the syntax is as adding a game, only without the match info: !scheduleremove <TIME> <DD/MM/YY>
-		else if (comment.find("!scheduleremove") != std::string::npos)
+		else if (comment.find("!scheduleremove ") != std::string::npos)
 		{
 			bool correctSyntax = true;
 
