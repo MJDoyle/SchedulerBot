@@ -969,12 +969,18 @@ void SchedulerBot::HandleComment(std::string comment, std::string channel, std::
 				if (_channels.count(channelToAdd))
 					AddToSendBuffer("Channel already listed", _admin);
 
-				//Otherwise, add the channel, save te channel list, and send confirmation message
+				//Otherwise, add the channel, save the channel list, join channel and send confirmation message
 				else
 				{
 					_channels[channelToAdd] = std::shared_ptr<Channel>(new Channel(channelToAdd));
 
 					SaveChannels();
+					
+					std::stringstream joinSS;
+
+					joinSS << "JOIN #" << channelToAdd << "\r\n";
+
+					Send(joinSS.str());
 
 					AddToSendBuffer(channelToAdd + " added to schedulebot", _admin);
 				}
